@@ -7,7 +7,6 @@
 . /etc/rc.subr
 
 name="omada"
-rcvar="eapcontroller_enable"
 start_cmd="eapcontroller_start"
 stop_cmd="eapcontroller_stop"
 
@@ -60,7 +59,6 @@ eapcontroller_start()
     
     exit
 
-  if checkyesno ${rcvar}; then
     echo "Starting Omada Controller. "
 
     # Open up netcat to listen on port ${HTTP_PORT}, and then close the connection immediately, then quit.
@@ -72,7 +70,6 @@ eapcontroller_start()
     /usr/local/bin/java -jar /usr/local/UniFi/lib/ace.jar start &
     echo $! > $pidfile
 
-  fi
 }
 
 eapcontroller_stop()
