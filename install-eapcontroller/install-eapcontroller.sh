@@ -192,13 +192,13 @@ echo -n "Patch omada-start.jar"
 OMADA_START_JAR="/opt/tplink/EAPController/lib/omada-start.jar"
 mkdir /tmp/omada-start-jar
 if [ ! -f /opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak ]; then
-    cp /opt/tplink/EAPController/lib/${OMADA_START_JAR} /opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak
+    cp "/opt/tplink/EAPController/lib/${OMADA_START_JAR}" "/opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak"
 fi
-cp /opt/tplink/EAPController/lib/${OMADA_START_JAR} /tmp/omada-start-jar/
+cp "/opt/tplink/EAPController/lib/${OMADA_START_JAR}" "/tmp/omada-start-jar/"
 ( cd /tmp/omada-start-jar/ && jar -xf ${OMADA_START_JAR} )
 /usr/bin/fetch -o /tmp/omada-start-jar/com/tp_link/omada/start/OmadaLinuxMain.class ${RC_SCRIPT_URL}
 ( cd /tmp/omada-start-jar/ && jar -cvf ${OMADA_START_JAR} * )
-cp /tmp/omada-start-jar/${OMADA_START_JAR} /opt/tplink/EAPController/lib/${OMADA_START_JAR} 
+cp "/tmp/omada-start-jar/${OMADA_START_JAR}" "/opt/tplink/EAPController/lib/${OMADA_START_JAR}"
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb
@@ -286,7 +286,7 @@ import_mongo_db() {
 # Restore the backup:
 if [ ! -z "${BACKUPFILE}" ] && [ -f ${BACKUPFILE} ]; then
   echo "Restoring OMADA Controller data..."
-  mv /opt/tplink/EAPController/data /opt/tplink/EAPController/data-`date +%Y%m%d-%H%M`
+  mv "/opt/tplink/EAPController/data" "/opt/tplink/EAPController/data-`date +%Y%m%d-%H%M`"
   /usr/bin/tar -vxzf ${BACKUPFILE} -C /
 fi
 
