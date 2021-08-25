@@ -188,17 +188,17 @@ rm /opt/tplink/EAPController/install.sh
 rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
 
-echo -n "Patch eap-start-*.jar"
-EAP_START_JAR=$(ls /opt/tplink/EAPController/lib/eap-start-*.jar | sed 's#.*/##') #Get jar name
-mkdir /tmp/eap-start-jar
-if [ ! -f /opt/tplink/EAPController/lib/${EAP_START_JAR}.bak ]; then
-    cp /opt/tplink/EAPController/lib/${EAP_START_JAR} /opt/tplink/EAPController/lib/${EAP_START_JAR}.bak
+echo -n "Patch omada-start.jar"
+OMADA-START_JAR="/opt/tplink/EAPController/lib/omada-start.jar"
+mkdir /tmp/omada-start-jar
+if [ ! -f /opt/tplink/EAPController/lib/${OMADA-START_JAR}.bak ]; then
+    cp /opt/tplink/EAPController/lib/${OMADA-START_JAR} /opt/tplink/EAPController/lib/${OMADA-START_JAR}.bak
 fi
-cp /opt/tplink/EAPController/lib/${EAP_START_JAR} /tmp/eap-start-jar/
-( cd /tmp/eap-start-jar/ && jar -xf ${EAP_START_JAR} )
-/usr/bin/fetch -o /tmp/eap-start-jar/com/tp_link/eap/start/EapLinuxMain.class ${RC_SCRIPT_URL}
-( cd /tmp/eap-start-jar/ && jar -cvf ${EAP_START_JAR} * )
-cp /tmp/eap-start-jar/${EAP_START_JAR} /opt/tplink/EAPController/lib/${EAP_START_JAR} 
+cp /opt/tplink/EAPController/lib/${OMADA-START_JAR} /tmp/omada-start-jar/
+( cd /tmp/omada-start-jar/ && jar -xf ${OMADA-START_JAR} )
+/usr/bin/fetch -o /tmp/omada-start-jar/com/tp_link/omada/start/OmadaLinuxMain.class ${RC_SCRIPT_URL}
+( cd /tmp/omada-start-jar/ && jar -cvf ${OMADA-START_JAR} * )
+cp /tmp/omada-start-jar/${OMADA-START_JAR} /opt/tplink/EAPController/lib/${OMADA-START_JAR} 
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb

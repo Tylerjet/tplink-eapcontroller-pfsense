@@ -26,7 +26,7 @@ JRE_HOME="/usr/local/openjdk8/jre"
 #"${OMADA_HOME}/jre"
 JAVA_TOOL="${JRE_HOME}/bin/java"
 JAVA_OPTS="-server -Xms128m -Xmx1024m -XX:MaxHeapFreeRatio=60 -XX:MinHeapFreeRatio=30  -XX:+HeapDumpOnOutOfMemoryError -Deap.home=${OMADA_HOME}"
-MAIN_CLASS="com.tp_link.eap.start.EapLinuxMain"
+MAIN_CLASS="com.tp_link.omada.start.OmadaLinuxMain"
 
 [ ! -f ${PROPERTY_DIR}/jetty.properties ] || HTTP_PORT=$(grep "^[^#;]" ${PROPERTY_DIR}/jetty.properties | sed -n 's/http.connector.port=\([0-9]\+\)/\1/p' | sed -r 's/\r//')
 HTTP_PORT=${HTTP_PORT:-8088}
