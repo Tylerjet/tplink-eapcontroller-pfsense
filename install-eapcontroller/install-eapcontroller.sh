@@ -294,5 +294,5 @@ import_mongo_db
 
 # Start it up:
 echo -n "Starting the OMADA Controller service..."
-/usr/sbin/service eapcontroller.sh start
+/usr/sbin/service eapcontroller.sh onestart
 echo " done."
