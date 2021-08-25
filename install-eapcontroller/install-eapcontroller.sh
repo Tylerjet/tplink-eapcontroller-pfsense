@@ -220,9 +220,9 @@ chmod +x /usr/local/etc/rc.d/eapcontroller.sh
 # Add the startup variable to rc.conf.local.
 # Eventually, this step will need to be folded into pfSense, which manages the main rc.conf.
 # In the following comparison, we expect the 'or' operator to short-circuit, to make sure the file exists and avoid grep throwing an error.
-if [ ! -f /etc/rc.conf.local ] || [ $(grep -c eapcontroller_enable /etc/rc.conf.local) -eq 0 ]; then
+if [ ! -f /etc/rc.conf ] || [ $(grep -c eapcontroller_enable /etc/rc.conf) -eq 0 ]; then
   echo "Enabling the OMADA Controller service..."
-  echo "eapcontroller_enable=YES" >> /etc/rc.conf.local
+  echo "eapcontroller_enable=YES" >> /etc/rc.conf
   echo " done."
 fi
 
