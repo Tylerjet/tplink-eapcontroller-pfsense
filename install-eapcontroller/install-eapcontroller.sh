@@ -187,10 +187,11 @@ echo "Remove Omada [un]install scripts"
 rm /opt/tplink/EAPController/install.sh
 rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
-
+sleep 3
 echo "Patch omada-start.jar"
 OMADA_START_JAR="/opt/tplink/EAPController/lib/omada-start.jar"
 mkdir /tmp/omada-start-jar
+sleep 2
 if [ ! -f /opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak ]; then
     cp "/opt/tplink/EAPController/lib/${OMADA_START_JAR}" " /opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak"
 fi
