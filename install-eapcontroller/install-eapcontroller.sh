@@ -242,8 +242,7 @@ DEST_DIR=/opt/tplink
 DEST_FOLDER=EAPController
 INSTALLDIR=${DEST_DIR}/${DEST_FOLDER}
 DATA_DIR="${INSTALLDIR}/data"
-#LINK=/etc/init.d/tpeap
-#LINK_CMD=/usr/bin/tpeap
+
 
 BACKUP_DIR=${INSTALLDIR}/../eap_db_backup
 DB_FILE_NAME=eap.db.tar.gz
@@ -266,14 +265,6 @@ need_import_mongo_db() {
 }
 
 import_mongo_db() {
-    data_is_empty
-    [ 0 == $? ] && {
-      #echo "current data is not empty"
-      return
-    }
-
-    #echo "current data is empty"
-    
     if test -f ${BACKUP_DIR}/${DB_FILE_NAME}; then
         need_import_mongo_db
         if [ 1 == $? ]; then
@@ -303,5 +294,5 @@ import_mongo_db
 
 # Start it up:
 echo "Starting the OMADA Controller service..."
-/usr/sbin/service eapcontroller.sh onestart
+/usr/sbin/service eapcontroller.sh start
 echo " done."
