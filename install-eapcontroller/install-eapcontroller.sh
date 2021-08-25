@@ -191,7 +191,7 @@ echo " done."
 
 echo "Patch omada-start.jar"
 
-if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
+if [ ! -f "/opt/tplink/EAPController/lib/omada-start.jar.bak" ]; then
     cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
 fi
 cp "/opt/tplink/EAPController/lib/omada-start.jar" " /tmp/omada-start-jar/"
