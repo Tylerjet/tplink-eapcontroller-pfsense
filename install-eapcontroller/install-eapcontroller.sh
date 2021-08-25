@@ -187,19 +187,18 @@ echo "Remove Omada [un]install scripts"
 rm /opt/tplink/EAPController/install.sh
 rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
-sleep 3
+
 echo "Patch omada-start.jar"
-OMADA_START_JAR="omada-start.jar"
 mkdir /tmp/omada-start-jar
-sleep 2
-if [ ! -f /opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak ]; then
-    cp "/opt/tplink/EAPController/lib/${OMADA_START_JAR}" "/opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak"
+sleep 3
+if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
+    cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
 fi
-cp "/opt/tplink/EAPController/lib/${OMADA_START_JAR}" " /tmp/omada-start-jar/"
-( cd /tmp/omada-start-jar/ && jar -xf ${OMADA_START_JAR} )
-/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start ${RC_SCRIPT_URL}
-( cd /tmp/omada-start-jar/ && jar -cvf ${OMADA_START_JAR} * )
-cp "/tmp/omada-start-jar/${OMADA_START_JAR}" " /opt/tplink/EAPController/lib/${OMADA_START_JAR}"
+cp "/opt/tplink/EAPController/lib/omada-start.jar" " /tmp/omada-start-jar/"
+( cd /tmp/omada-start-jar/ && jar -xf omada-start.jar )
+/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/OmadaLinuxMain ${RC_SCRIPT_URL}
+( cd /tmp/omada-start-jar/ && jar -cvf omada-start.jar * )
+cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar"
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb
