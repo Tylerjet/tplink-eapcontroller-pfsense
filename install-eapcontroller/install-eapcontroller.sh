@@ -4,15 +4,15 @@
 # Installs the Omada Controller software on a FreeBSD machine (presumably running pfSense).
 
 # The latest version of Omada Controller:
-OMADA_SOFTWARE_URL=`curl https://www.tp-link.com/uk/support/download/eap225/v2/#Controller_Software | tr '"' '\n' | tr "'" '\n' | grep -e 'tar.gz$' -m 1`
+OMADA_SOFTWARE_URL=`curl -s https://www.tp-link.com/us/support/download/eap225/v3/#Controller_Software | tr '"' '\n' | tr "'" '\n' | grep -e 'tar.gz$' -m 1`
 
 
 JRE_HOME="/usr/local/openjdk8/jre"
 
 # The rc script associated with this branch or fork:
-RC_SCRIPT_URL="https://raw.githubusercontent.com/tinwhisker/tplink-eapcontroller-pfsense/master/rc.d/eapcontroller.sh"
+RC_SCRIPT_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/rc.d/eapcontroller.sh"
 
-PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tinwhisker/tplink-eapcontroller-pfsense/master/modifications/EapLinuxMain.class"
+PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/EapLinuxMain.class"
 
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
