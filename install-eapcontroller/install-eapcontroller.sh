@@ -166,6 +166,7 @@ echo " done."
 # (the -o option overwrites the existing files without complaining)
 echo "Installing OMADA Controller in /opt/tplink/EAPController..."
 mkdir /tmp/omadac
+mkdir /tmp/omada-start-jar
 tar -xvzC /tmp/omadac -f Omada_Controller.tar.gz --strip-components=1
 mkdir /opt
 mkdir /opt/tplink
@@ -189,12 +190,7 @@ rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
 
 echo "Patch omada-start.jar"
-mkdir /tmp/omada-start-jar
-sleep 3
-if [ ! -f /tmp/omada-start-jar]; then 
-mkdir /tmp/omada-start-jar
-fi
-sleep 2
+
 if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
     cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
 fi
