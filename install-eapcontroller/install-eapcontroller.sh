@@ -83,16 +83,6 @@ fi
 #/sbin/mount -a
 #echo " done."
 
-echo "CHECKING IF /tmp/omada-start-jar exists!!"
-if [ ! -d /tmp/omada-start-jar ]; then
-  echo "Not found creating"
-  mkdir /tmp/omada-start-jar
-  sleep 2
-  if [ -d /tmp/omada-start-jar ]; then
-    echo "Created!"
-  fi
-fi
-
 # Install mongodb, OpenJDK, and unzip (required to unpack Ubiquiti's download):
 # -F skips a package if it's already installed, without throwing an error.
 echo "Installing required packages..."
@@ -199,7 +189,7 @@ rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
 
 echo "Patch omada-start.jar"
-
+mkdir /tmp/omada-start-jar
 if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
     cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
 fi
