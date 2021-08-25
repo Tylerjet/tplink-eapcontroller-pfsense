@@ -84,11 +84,11 @@ fi
 #echo " done."
 
 echo "CHECKING IF /tmp/omada-start-jar exists!!"
-if [ ! -f /tmp/omada-start-jar ]; then
+if [ ! -d /tmp/omada-start-jar ]; then
   echo "Not found creating"
   mkdir /tmp/omada-start-jar
   sleep 2
-  if [ -f /tmp/omada-start-jar ]; then
+  if [ -d /tmp/omada-start-jar ]; then
     echo "Created!"
   fi
 fi
