@@ -203,7 +203,7 @@ echo "Patch omada-start.jar"
 if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
     cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
 fi
-cp "/opt/tplink/EAPController/lib/omada-start.jar" " /tmp/omada-start-jar/"
+cp "/opt/tplink/EAPController/lib/omada-start.jar" "/tmp/omada-start-jar"
 ( cd /tmp/omada-start-jar/ && jar -xf omada-start.jar )
 /usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/OmadaLinuxMain ${RC_SCRIPT_URL}
 ( cd /tmp/omada-start-jar/ && jar -cvf omada-start.jar * )
