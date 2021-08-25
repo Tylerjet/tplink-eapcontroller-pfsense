@@ -39,21 +39,21 @@ FREEBSD_PACKAGE_LIST_URL="https://pkg.freebsd.org/${ABI}/latest/packagesite.txz"
 # Stop the controller if it's already running...
 # First let's try the rc script if it exists:
 if [ -f /usr/local/etc/rc.d/omadacontroller.sh ]; then
-  echo -n "Stopping the OMADA Controller service..."
+  echo "Stopping the OMADA Controller service..."
   /usr/sbin/service omadacontroller.sh stop
   echo " done."
 fi
 
 # Then to be doubly sure, let's make sure ace.jar isn't running for some other reason:
 if [ $(ps ax | grep "eap.home=/opt/tplink/EAPController") -ne 0 ]; then
-  echo -n "Killing ace.jar process..."
+  echo "Killing ace.jar process..."
   /bin/kill -15 `ps ax | grep "eap.home=/opt/tplink/EAPController" | awk '{ print $1 }'`
   echo " done."
 fi
 
 # And then make sure mongodb doesn't have the db file open:
 if [ $(ps ax | grep -c "/opt/tplink/EAPController/data/[d]b") -ne 0 ]; then
-  echo -n "Killing mongod process..."
+  echo "Killing mongod process..."
   /bin/kill -15 `ps ax | grep "/opt/tplink/EAPController/data/[d]b" | awk '{ print $1 }'`
   echo " done."
 fi
@@ -67,19 +67,19 @@ fi
 
 # Add the fstab entries apparently required for OpenJDKse:
 #if [ $(grep -c fdesc /etc/fstab) -eq 0 ]; then
-#  echo -n "Adding fdesc filesystem to /etc/fstab..."
+#  echo "Adding fdesc filesystem to /etc/fstab..."
 #  echo -e "fdesc\t\t\t/dev/fd\t\tfdescfs\trw\t\t0\t0" >> /etc/fstab
 #  echo " done."
 #fi
 
 #if [ $(grep -c proc /etc/fstab) -eq 0 ]; then
-#  echo -n "Adding procfs filesystem to /etc/fstab..."
+#  echo "Adding procfs filesystem to /etc/fstab..."
 #  echo -e "proc\t\t\t/proc\t\tprocfs\trw\t\t0\t0" >> /etc/fstab
 #  echo " done."
 #fi
 
 # Run mount to mount the two new filesystems:
-#echo -n "Mounting new filesystems..."
+#echo "Mounting new filesystems..."
 #/sbin/mount -a
 #echo " done."
 
@@ -158,13 +158,13 @@ echo " done."
 cd `mktemp -d -t tplink`
 
 # Download OMADA Controller from TP-Link:
-echo -n "Downloading the OMADA Controller software..."
+echo "Downloading the OMADA Controller software..."
 /usr/bin/fetch ${OMADA_SOFTWARE_URL} -o Omada_Controller.tar.gz
 echo " done."
 
 # Unpack the archive into the /usr/local directory:
 # (the -o option overwrites the existing files without complaining)
-echo -n "Installing OMADA Controller in /opt/tplink/EAPController..."
+echo "Installing OMADA Controller in /opt/tplink/EAPController..."
 mkdir /tmp/omadac
 tar -xvzC /tmp/omadac -f Omada_Controller.tar.gz --strip-components=1
 mkdir /opt
@@ -173,22 +173,22 @@ mv /tmp/omadac  /opt/tplink/EAPController
 echo " done."
 
 # Update OMADA's symbolic link for mongod to point to the version we just installed:
-echo -n "Updating mongod link..."
+echo "Updating mongod link..."
 /bin/ln -sf /usr/local/bin/mongod /opt/tplink/EAPController/bin/mongod
 /bin/ln -sf /usr/local/bin/mongo /opt/tplink/EAPController/bin/mongo
 echo " done."
 
 # Update OMADA's symbolic link for Java to point to the version we just installed:
-echo -n "Updating Java link..."
+echo "Updating Java link..."
 /bin/ln -sf ${JAVA_HOME} /opt/tplink/EAPController/jre
 echo " done."
 
-echo -n "Remove Omada [un]install scripts"
+echo "Remove Omada [un]install scripts"
 rm /opt/tplink/EAPController/install.sh
 rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
 
-echo -n "Patch omada-start.jar"
+echo "Patch omada-start.jar"
 OMADA_START_JAR="/opt/tplink/EAPController/lib/omada-start.jar"
 mkdir /tmp/omada-start-jar
 if [ ! -f /opt/tplink/EAPController/lib/${OMADA_START_JAR}.bak ]; then
@@ -202,7 +202,7 @@ cp "/tmp/omada-start-jar/${OMADA_START_JAR}" " /opt/tplink/EAPController/lib/${O
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb
-#echo -n "Checking partition size..."
+#echo "Checking partition size..."
 #if [ `df -k | awk '$NF=="/"{print $2}'` -le 4194302 ]; then
 #    echo -e "\nunifi.db.extraargs=--smallfiles\n" >> /opt/tplink/EAPController/data/system.properties
 #fi
@@ -211,7 +211,7 @@ echo " done."
 
 
 # Fetch the rc script from github:
-echo -n "Installing rc script..."
+echo "Installing rc script..."
 /usr/bin/fetch -o /usr/local/etc/rc.d/eapcontroller.sh ${RC_SCRIPT_URL}
 echo " done."
 
@@ -222,7 +222,7 @@ chmod +x /usr/local/etc/rc.d/eapcontroller.sh
 # Eventually, this step will need to be folded into pfSense, which manages the main rc.conf.
 # In the following comparison, we expect the 'or' operator to short-circuit, to make sure the file exists and avoid grep throwing an error.
 if [ ! -f /etc/rc.conf.local ] || [ $(grep -c eapcontroller_enable /etc/rc.conf.local) -eq 0 ]; then
-  echo -n "Enabling the OMADA Controller service..."
+  echo "Enabling the OMADA Controller service..."
   echo "eapcontroller_enable=YES" >> /etc/rc.conf.local
   echo " done."
 fi
@@ -244,7 +244,7 @@ MAP_FILE_NAME=eap.map.tar.gz
 need_import_mongo_db() {
     while true
     do
-        echo -n "${DESC} detects that you have backup previous setting before, will you import it (y/n): "
+        echo "${DESC} detects that you have backup previous setting before, will you import it (y/n): "
         read input
         confirm=`echo $input | tr '[a-z]' '[A-Z]'`
 
@@ -293,6 +293,6 @@ fi
 import_mongo_db
 
 # Start it up:
-echo -n "Starting the OMADA Controller service..."
+echo "Starting the OMADA Controller service..."
 /usr/sbin/service eapcontroller.sh onestart
 echo " done."
