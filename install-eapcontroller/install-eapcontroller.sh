@@ -201,7 +201,7 @@ cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-s
 echo " done."
 
 echo "Patch omada-common-4.4.4.jar"
-mkdir /tmp/omada-common-4.4.4-jar
+mkdir /tmp/omada-common-4.4.4-jar/
 if [ ! -f /opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak ]; then
     cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak"
 fi
