@@ -61,7 +61,7 @@ To install the controller software and the rc script:
 2. Run this one-line command, which downloads the install script from Github and executes it with sh:
 
   ```
-    fetch -o - https://raw.githubusercontent.com/tinwhisker/tplink-eapcontroller-pfsense/master/install-eapcontroller/install-eapcontroller.sh | sh -s
+    fetch -o - https://raw.githubusercontent.com/Tylerjet/tplink-eapcontroller-pfsense/master/install-eapcontroller/install-eapcontroller.sh | sh -s
   ```
 
 The install script will install dependencies, download the EAP controller software, make some adjustments, and start the EAP controller.
