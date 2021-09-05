@@ -31,7 +31,7 @@ MAIN_CLASS="com.tplink.omada.start.OmadaLinuxMain"
 HTTP_PORT=${HTTP_PORT:-8088}
 
 JSVC_OPTS="${JAVA_OPTS}\
- -cp /usr/share/java/commons-daemon.jar:${OMADA_HOME}/lib/* \
+ -cp /usr/local/share/java/classes/commons-daemon.jar:${OMADA_HOME}/lib/* \
  -showversion"
 
 eapcontroller_start()

@@ -14,6 +14,7 @@ RC_SCRIPT_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-p
 
 PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/OmadaLinuxMain.class"
 PATCHED_ZCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/z.class"
+
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
   echo "FreeBSD pkgng not installed. Installing..."
@@ -113,6 +114,7 @@ AddPkg () {
         pkg lock -yq $pkgname
 }
 
+AddPkg apache-commons-daemon
 AddPkg png
 AddPkg freetype2
 AddPkg fontconfig
@@ -169,7 +171,7 @@ mkdir /tmp/omadac
 tar -xvzC /tmp/omadac -f Omada_Controller.tar.gz --strip-components=1
 mkdir /opt
 mkdir /opt/tplink
-mv /tmp/omadac  /opt/tplink/EAPController
+cp /tmp/omadac/* /opt/tplink/EAPController
 echo " done."
 
 # Update OMADA's symbolic link for mongod to point to the version we just installed:
