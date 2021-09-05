@@ -113,6 +113,7 @@ AddPkg () {
         pkg lock -yq $pkgname
 }
 
+AddPkg snappy
 AddPkg png
 AddPkg freetype2
 AddPkg fontconfig
@@ -141,7 +142,6 @@ AddPkg javavmwrapper
 AddPkg java-zoneinfo
 AddPkg openjdk8
 #AddPkg snappyjava
-AddPkg snappy
 AddPkg cyrus-sasl
 AddPkg icu
 AddPkg boost-libs
