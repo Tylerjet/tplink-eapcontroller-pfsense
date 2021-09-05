@@ -215,11 +215,11 @@ cp "/tmp/omada-common-4.4.4-jar/omada-common-4.4.4.jar" "/opt/tplink/EAPControll
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb
-#echo "Checking partition size..."
-#if [ `df -k | awk '$NF=="/"{print $2}'` -le 4194302 ]; then
-#    echo -e "\nunifi.db.extraargs=--smallfiles\n" >> /opt/tplink/EAPController/data/system.properties
-#fi
-#echo " done."
+echo "Checking partition size..."
+if [ `df -k | awk '$NF=="/"{print $2}'` -le 4194302 ]; then
+    echo -e "\nunifi.db.extraargs=--smallfiles\n" >> /opt/tplink/EAPController/data/system.properties
+fi
+echo " done."
 
 
 
