@@ -207,7 +207,7 @@ if [ ! -f /opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak ]; then
 fi
 cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/tmp/omada-common-4.4.4-jar"
 ( cd /tmp/omada-common-4.4.4-jar/ && jar -xf omada-common-4.4.4.jar )
-/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/z.class ${PATCHED_ZCLASS_URL}
+/usr/bin/fetch -o /tmp/omada-common-4.4.4-jar/com/tplink/omada/common/util/z.class ${PATCHED_ZCLASS_URL}
 ( cd /tmp/omada-common-4.4.4-jar/ && jar -cvf omada-common-4.4.4.jar * )
 cp "/tmp/omada-common-4.4.4-jar/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar"
 echo " done."
