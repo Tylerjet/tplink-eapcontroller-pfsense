@@ -195,7 +195,7 @@ if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
 fi
 cp "/opt/tplink/EAPController/lib/omada-start.jar" "/tmp/omada-start-jar"
 ( cd /tmp/omada-start-jar/ && jar -xf omada-start.jar )
-/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/ ${PATCHED_STARTCLASS_URL}
+/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/OmadaLinuxMain.class ${PATCHED_STARTCLASS_URL}
 ( cd /tmp/omada-start-jar/ && jar -cvf omada-start.jar * )
 cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar"
 echo " done."
