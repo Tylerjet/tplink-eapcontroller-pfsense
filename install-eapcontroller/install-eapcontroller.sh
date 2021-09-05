@@ -145,7 +145,7 @@ AddPkg openjdk8
 AddPkg cyrus-sasl
 AddPkg icu
 AddPkg boost-libs
-AddPkg mongodb36
+AddPkg mongodb34
 AddPkg unzip
 AddPkg pcre
 
