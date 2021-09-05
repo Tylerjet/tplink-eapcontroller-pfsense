@@ -13,7 +13,7 @@ JRE_HOME="/usr/local/openjdk8/jre"
 RC_SCRIPT_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/rc.d/eapcontroller.sh"
 
 PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/OmadaLinuxMain.class"
-
+PATCHED_ZCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/z.class"
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
   echo "FreeBSD pkgng not installed. Installing..."
@@ -196,6 +196,7 @@ fi
 cp "/opt/tplink/EAPController/lib/omada-start.jar" "/tmp/omada-start-jar"
 ( cd /tmp/omada-start-jar/ && jar -xf omada-start.jar )
 /usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/OmadaLinuxMain.class ${PATCHED_STARTCLASS_URL}
+/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/z.class ${PATCHED_ZCLASS_URL}
 ( cd /tmp/omada-start-jar/ && jar -cvf omada-start.jar * )
 cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar"
 echo " done."
