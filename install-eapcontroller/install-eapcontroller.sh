@@ -211,6 +211,7 @@ cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/tmp/omada-common-4.4
 ( cd /tmp/omada-common-4.4.4-jar/ && jar -cvf omada-common-4.4.4.jar * )
 cp "/tmp/omada-common-4.4.4-jar/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar"
 echo " done."
+
 # If partition size is < 4GB, add smallfiles option to mongodb
 #echo "Checking partition size..."
 #if [ `df -k | awk '$NF=="/"{print $2}'` -le 4194302 ]; then
