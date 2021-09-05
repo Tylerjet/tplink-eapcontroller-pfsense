@@ -12,7 +12,7 @@ JRE_HOME="/usr/local/openjdk8/jre"
 # The rc script associated with this branch or fork:
 RC_SCRIPT_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/rc.d/eapcontroller.sh"
 
-PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/OmadaLinuxMain.class"
+PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/z.class"
 
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
@@ -188,16 +188,16 @@ rm /opt/tplink/EAPController/install.sh
 rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
 
-echo "Patch omada-start.jar"
-mkdir /tmp/omada-start-jar
-if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
-    cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
+echo "Patch omada-common-4.4.4.jar"
+mkdir /tmp/omada-common-4.4.4-jar
+if [ ! -f /opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak ]; then
+    cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak"
 fi
-cp "/opt/tplink/EAPController/lib/omada-start.jar" "/tmp/omada-start-jar"
-( cd /tmp/omada-start-jar/ && jar -xf omada-start.jar )
-/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/OmadaLinuxMain ${RC_SCRIPT_URL}
-( cd /tmp/omada-start-jar/ && jar -cvf omada-start.jar * )
-cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar"
+cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/tmp/omada-common-4.4.4-jar"
+( cd /tmp/omada-common-4.4.4-jar/ && jar -xf omada-common-4.4.4.jar )
+/usr/bin/fetch -o /tmp/omada-common-4.4.4-jar/com/tplink/omada/common/util/ ${RC_SCRIPT_URL}
+( cd /tmp/omada-common-4.4.4-jar/ && jar -cvf omada-common-4.4.4.jar * )
+cp "/tmp/omada-common-4.4.4-jar/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar"
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb
