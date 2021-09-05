@@ -170,8 +170,8 @@ echo "Installing OMADA Controller in /opt/tplink/EAPController..."
 mkdir /tmp/omadac
 tar -xvzC /tmp/omadac -f Omada_Controller.tar.gz --strip-components=1
 mkdir /opt
-mkdir /opt/tplink
-mv /tmp/omadac/* /opt/tplink/EAPController
+mkdir /opt/tplink/EAPController
+cp -r /tmp/omadac/* /opt/tplink/EAPController
 echo " done."
 
 # Update OMADA's symbolic link for mongod to point to the version we just installed:
