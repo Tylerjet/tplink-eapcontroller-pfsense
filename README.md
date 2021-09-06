@@ -10,18 +10,15 @@ This README echos the same issues, so is practically verbatim.
 
 Update
 -------
-2021-02-09 
+Sept. 5th 2021
   
-    Revisited this as I wanted to use it again.
-      Fix: Works(ish)
-      Fix: Updated to support the Omada branding.
-      Fix: Install script will attempt to find the latest installation URL.
-    
+  Script is now grabing v4.4.4 of SDN
     Known Issues:
      - This is still very VERY much incomplete.
      - Starting the service can take a few minutes.
      - Upgrading is not tested.
      - Script is messy!
+     - Mongodb is not connecting to the SDN so until that is fixed more debugging cannot be done or testing be done.
 
 Purpose
 -------
@@ -37,8 +34,6 @@ Challenges
 ----------
 
 Because the EAP Controller software is proprietary, it cannot be built from source and cannot be included directly in a package. To work around this, we can download the EAP controller software directly from TP-Link during the installation process.
-
-Because TP-Link does not provide a standard way to fetch the software (not even a "latest" symlink), we cannot identify the appropriate version to download from TP-Link programmatically. It will be up to the package maintainers to keep the package up to date with the latest version of the software available from TP-Link.
 
 Licensing
 ---------
@@ -61,7 +56,7 @@ To install the controller software and the rc script:
 2. Run this one-line command, which downloads the install script from Github and executes it with sh:
 
   ```
-    fetch -o - https://raw.githubusercontent.com/Tylerjet/tplink-eapcontroller-pfsense/master/install-eapcontroller/install-eapcontroller.sh | sh -s
+    fetch -F -o - https://raw.githubusercontent.com/Tylerjet/tplink-eapcontroller-pfsense/master/install-eapcontroller/install-eapcontroller.sh | sh -s
   ```
 
 The install script will install dependencies, download the EAP controller software, make some adjustments, and start the EAP controller.
@@ -93,16 +88,6 @@ Contributing
 ### EAP controller updates
 
 The main area of concern is keeping up with TP-Links's updates. I don't know of a way to automatically grab the URL to the current version; UBNT posts updates only to their blog and their forums, and they don't seem to have a link alias to the current release. That means we have to commit an update directly to the install.sh script with every release.
-
-If you're aware of an update before I am:
-
-1. Create a branch from master, named for the version you are about to test.
-2. Update the URL in install.sh to the latest version.
-3. Test it on your pfSense system.
-4. Optional, but ideal: test it on a fresh pfSense system, as in a VM.
-5. If it checks out, submit a pull request from your branch. This helps bring my attention to the update and lets me know that you have tested the new version.
-
-I will then test on my own systems and merge the PR.
 
 ### Other enhancements
 
