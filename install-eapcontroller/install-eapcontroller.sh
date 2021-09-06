@@ -142,8 +142,6 @@ AddPkg libinotify
 AddPkg javavmwrapper
 AddPkg java-zoneinfo
 AddPkg openjdk8
-#AddPkg snappyjava
-#AddPkg snappy
 AddPkg cyrus-sasl
 AddPkg icu
 AddPkg boost-libs
