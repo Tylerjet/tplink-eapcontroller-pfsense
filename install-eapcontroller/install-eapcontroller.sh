@@ -167,9 +167,9 @@ echo " done."
 # Unpack the archive into the /usr/local directory:
 # (the -o option overwrites the existing files without complaining)
 echo "Installing OMADA Controller in /opt/tplink/EAPController..."
-mkdir /tmp/omadac
+mkdir -p  /tmp/omadac
 tar -xvzC /tmp/omadac -f Omada_Controller.tar.gz --strip-components=1
-mkdir /opt/tplink/EAPController
+mkdir -p  /opt/tplink/EAPController
 cp -r /tmp/omadac/* /opt/tplink/EAPController
 echo " done."
 
@@ -195,7 +195,7 @@ rm /opt/tplink/EAPController/uninstall.sh
 echo " done."
 
 echo "Patch omada-start.jar"
-mkdir /tmp/omada-start-jar
+mkdir -p  /tmp/omada-start-jar
 if [ ! -f /opt/tplink/EAPController/lib/omada-start.jar.bak ]; then
     cp "/opt/tplink/EAPController/lib/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar.bak"
 fi
@@ -207,7 +207,7 @@ cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-s
 echo " done."
 
 echo "Patch omada-common-4.4.4.jar"
-mkdir /tmp/omada-common-4.4.4-jar/
+mkdir -p  /tmp/omada-common-4.4.4-jar/
 if [ ! -f /opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak ]; then
     cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak"
 fi
