@@ -14,6 +14,7 @@ RC_SCRIPT_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-p
 
 PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/OmadaLinuxMain.class"
 PATCHED_ZCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/z.class"
+MODIFIED_OMADA.PROPERTIES_URL=""
 
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
@@ -172,10 +173,15 @@ mkdir /opt/tplink/EAPController/
 cp -r /tmp/omadac/* /opt/tplink/EAPController
 echo " done."
 
+# Put modified properties into folder
+echo "Updating omada.properties"
+/usr/bin/fetch -o /opt/tplink/EAPController/properties/omada.properties ${MODIFIED_OMADA.PROPERTIES_URL}
+
 # Update OMADA's symbolic link for mongod to point to the version we just installed:
 echo "Updating mongod link..."
 /bin/ln -sf /usr/local/bin/mongod /opt/tplink/EAPController/bin/mongod
 /bin/ln -sf /usr/local/bin/mongo /opt/tplink/EAPController/bin/mongo
+touch /opt/tplink/EAPController/data/mongod.pid
 echo " done."
 
 # Update OMADA's symbolic link for Java to point to the version we just installed:
