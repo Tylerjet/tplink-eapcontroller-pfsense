@@ -164,6 +164,8 @@ echo "Downloading the OMADA Controller software..."
 /usr/bin/fetch ${OMADA_SOFTWARE_URL} -o Omada_Controller.tar.gz
 echo " done."
 
+cd '/'
+
 # Unpack the archive into the /usr/local directory:
 # (the -o option overwrites the existing files without complaining)
 echo "Installing OMADA Controller in /opt/tplink/EAPController..."
