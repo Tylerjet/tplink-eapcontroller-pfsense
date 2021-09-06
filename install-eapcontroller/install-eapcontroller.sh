@@ -14,7 +14,7 @@ RC_SCRIPT_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-p
 
 PATCHED_STARTCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/OmadaLinuxMain.class"
 PATCHED_ZCLASS_URL="https://raw.githubusercontent.com/tylerjet/tplink-eapcontroller-pfsense/master/modifications/z.class"
-MODIFIED_OMADA.PROPERTIES_URL="https://raw.githubusercontent.com//Tylerjet/tplink-eapcontroller-pfsense/blob/master/modifications/omada.properties"
+MODIFIED_OMADA.PROPERTIES_URL="https://raw.githubusercontent.com//Tylerjet/tplink-eapcontroller-pfsense/master/modifications/omada.properties"
 
 # If pkg-ng is not yet installed, bootstrap it:
 if ! /usr/sbin/pkg -N 2> /dev/null; then
@@ -168,7 +168,6 @@ echo " done."
 echo "Installing OMADA Controller in /opt/tplink/EAPController..."
 mkdir /tmp/omadac
 tar -xvzC /tmp/omadac -f Omada_Controller.tar.gz --strip-components=1
-mkdir /opt
 mkdir /opt/tplink/EAPController/
 cp -r /tmp/omadac/* /opt/tplink/EAPController
 echo " done."
