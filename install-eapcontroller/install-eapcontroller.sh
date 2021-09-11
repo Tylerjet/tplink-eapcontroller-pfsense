@@ -205,7 +205,7 @@ fi
 cp "/opt/tplink/EAPController/lib/omada-start.jar" "/tmp/omada-start-jar"
 ( cd /tmp/omada-start-jar/ && jar -xf omada-start.jar )
 /usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/OmadaLinuxMain.class ${PATCHED_STARTCLASS_URL}
-/usr/bin/fetch -0 /tmp/omada-start-jar/com/tplink/omada/start/b/d.class ${MODIFIED_DCLASS_URL}
+/usr/bin/fetch -o /tmp/omada-start-jar/com/tplink/omada/start/b/d.class ${MODIFIED_DCLASS_URL}
 ( cd /tmp/omada-start-jar/ && jar -cvf omada-start.jar * )
 cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar"
 echo " done."
