@@ -4,7 +4,7 @@
 # Installs the Omada Controller software on a FreeBSD machine (presumably running pfSense).
 
 # The latest version of Omada Controller:
-OMADA_SOFTWARE_URL=`curl -s https://www.tp-link.com/us/support/download/eap225/v3/#Controller_Software | tr '"' '\n' | tr "'" '\n' | grep -e 'tar.gz$' -m 1`
+OMADA_SOFTWARE_URL=`curl -s https://www.tp-link.com/us/support/download/omada-software-controller/v5/#Controller_Software | tr '"' '\n' | tr "'" '\n' | grep -e 'tar.gz$' -m 1`
 
 
 JRE_HOME="/usr/local/openjdk8/jre"
@@ -117,7 +117,7 @@ AddPkg () {
 }
 
 AddPkg snappy
-AddPkg apache-commons-daemon-1.2.2
+AddPkg apache-commons-daemon
 AddPkg png
 AddPkg freetype2
 AddPkg fontconfig
