@@ -117,7 +117,7 @@ AddPkg () {
 }
 
 AddPkg snappy
-AddPkg apache-commons-daemon
+AddPkg apache-commons-daemon-1.2.2
 AddPkg png
 AddPkg freetype2
 AddPkg fontconfig
@@ -148,7 +148,7 @@ AddPkg openjdk8
 AddPkg cyrus-sasl
 AddPkg icu
 AddPkg boost-libs
-AddPkg mongodb36
+AddPkg mongodb40-4.0.12_1
 AddPkg unzip
 AddPkg pcre
 
