@@ -208,16 +208,16 @@ cp "/opt/tplink/EAPController/lib/omada-start.jar" "/tmp/omada-start-jar"
 cp "/tmp/omada-start-jar/omada-start.jar" "/opt/tplink/EAPController/lib/omada-start.jar"
 echo " done."
 
-echo "Patch omada-common-4.4.4.jar"
-mkdir -p  /tmp/omada-common-4.4.4-jar/
-if [ ! -f /opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak ]; then
-    cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar.bak"
+echo "Patch omada-common-5.1.7.jar"
+mkdir -p  /tmp/omada-common-5.1.7-jar/
+if [ ! -f /opt/tplink/EAPController/lib/omada-common-5.1.7.jar.bak ]; then
+    cp "/opt/tplink/EAPController/lib/omada-common-5.1.7.jar" "/opt/tplink/EAPController/lib/omada-common-5.1.7.jar.bak"
 fi
-cp "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar" "/tmp/omada-common-4.4.4-jar"
-( cd /tmp/omada-common-4.4.4-jar/ && jar -xf omada-common-4.4.4.jar )
-/usr/bin/fetch -o /tmp/omada-common-4.4.4-jar/com/tplink/omada/common/util/z.class ${PATCHED_ZCLASS_URL}
-( cd /tmp/omada-common-4.4.4-jar/ && jar -cvf omada-common-4.4.4.jar * )
-cp "/tmp/omada-common-4.4.4-jar/omada-common-4.4.4.jar" "/opt/tplink/EAPController/lib/omada-common-4.4.4.jar"
+cp "/opt/tplink/EAPController/lib/omada-common-5.1.7.jar" "/tmp/omada-common-5.1.7-jar"
+( cd /tmp/omada-common-5.1.7-jar/ && jar -xf omada-common-5.1.7.jar )
+/usr/bin/fetch -o /tmp/omada-common-5.1.7-jar/com/tplink/omada/common/util/z.class ${PATCHED_ZCLASS_URL}
+( cd /tmp/omada-common-5.1.7-jar/ && jar -cvf omada-common-5.1.7.jar * )
+cp "/tmp/omada-common-5.1.7-jar/omada-common-5.1.7.jar" "/opt/tplink/EAPController/lib/omada-common-5.1.7.jar"
 echo " done."
 
 # If partition size is < 4GB, add smallfiles option to mongodb
