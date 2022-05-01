@@ -1,3 +1,5 @@
+Archived for now as i don't have the time and much has changed it seems again in 5.1.7 of the controller its just easier to run a VM via a distro they support
+
 eapcontroller-pfsense
 =============
 
